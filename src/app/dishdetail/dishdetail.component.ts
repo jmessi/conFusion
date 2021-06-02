@@ -6,6 +6,7 @@ import { Dish } from '../shared/dish';
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss']
 })
+
 export class DishdetailComponent implements OnInit {
 
   @Input()
