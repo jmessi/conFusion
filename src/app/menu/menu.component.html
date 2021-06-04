@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <mat-grid-tile *ngFor='let dish of dishes' (click)='onSelect(dish)'></mat-grid-tile>
+    <mat-grid-tile *ngFor="let dish of dishes" (click)='onSelect(dish)'></mat-grid-tile>
 
     <div fxFlex>
       <mat-grid-list [cols]="2" rowHeight="200px">

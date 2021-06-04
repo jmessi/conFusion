@@ -10,9 +10,9 @@ import { DishService } from '../services/dish.service'
 
 export class MenuComponent implements OnInit {
 
-  dishes: Dish[] | undefined;
+  dishes: Dish[];
 
-  selectedDish: Dish | undefined;
+  selectedDish: Dish;
 
   constructor(private dishService: DishService) { }
 
