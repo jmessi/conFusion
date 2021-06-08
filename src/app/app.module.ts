@@ -4,14 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 
 //Material stuff
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MaterialModule } from './shared/material.module';
 
 //HammerJS
 import 'hammerjs';
@@ -46,15 +39,8 @@ import { LeaderService } from './services/leader.service';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    FlexLayoutModule,
     AppRoutingModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDialogModule
+    MaterialModule //all material modules aro on a separate file, to not clutter this one
   ],
   providers: [
     DishService,
