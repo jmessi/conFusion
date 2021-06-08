@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { FormsModule } from '@angular/forms';
 
 //Material stuff
 import { MaterialModule } from './shared/material.module';
@@ -40,6 +41,7 @@ import { LeaderService } from './services/leader.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     MaterialModule //all material modules aro on a separate file, to not clutter this one
   ],
   providers: [
