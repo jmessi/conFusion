@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //Material stuff
 import { MaterialModule } from './shared/material.module';
@@ -36,13 +37,14 @@ import { LeaderService } from './services/leader.service';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MaterialModule //all material modules aro on a separate file, to not clutter this one
+    ReactiveFormsModule,
+    MaterialModule //all material modules are on a separate file, to not clutter this one
   ],
   providers: [
     DishService,
