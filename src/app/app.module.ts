@@ -1,9 +1,10 @@
 //Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { HttpClientModule } from '@angular/common/http';
 
 //Material stuff
 import { MaterialModule } from './shared/material.module';
@@ -25,6 +26,7 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
 //Services
 import { DishService } from './services/dish.service';
 import { LeaderService } from './services/leader.service';
+import { baseURL } from './shared/baseurl';
 
 
 @NgModule({
@@ -44,11 +46,14 @@ import { LeaderService } from './services/leader.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule //all material modules are on a separate file, to not clutter this one
   ],
   providers: [
     DishService,
-    LeaderService
+    LeaderService,
+    { provide: 'BaseURL', useValue: baseURL
+  }
   ],
   //entryComponents are deprecated
   entryComponents:[
