@@ -16,6 +16,7 @@ import { Comment } from '../shared/comment';
 export class DishdetailComponent implements OnInit {
 
   dish: Dish;
+  dishCopy: Dish;
   errMess: string;
   dishIds: string[];
   prev: string;
@@ -88,39 +89,48 @@ export class DishdetailComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.createForm();
+    this.dishService.getDishIds()
+    .subscribe((dishIds) => this.dishIds = dishIds);
+
+    this.route.params
+    .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+    .subscribe(
+      dish => {
+        this.dish = dish;
+        this.dishCopy = dish;
+        this.setPrevNext(dish.id);
+      },
+      errmess => this.errMess = <any>errmess
+      );
+    }
+
   onSubmit(){
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString(); //sets date to comment
-    this.dish.comments.push(this.comment); //pushes complete comment into Comments of Dish
+    this.dishCopy.comments.push(this.comment); //pushes complete comment into Comments of Dish
+    this.dishService.putDish(this.dishCopy)
+      .subscribe(dish => {
+        this.dish = dish;
+        this.dishCopy = dish;
+      },
+      errmess => {
+        this.dish = null;
+        this.dishCopy = null;
+        this.errMess = <any>errmess;
+      });
 
     console.log(this.comment);
+
+    this.commentFormDirective.resetForm();
     this.commentForm.reset({
       author: '',
       rating: 5,
       comment: ''
     });
 
-    this.commentFormDirective.resetForm();
   }
-
-
-  ngOnInit() {
-    this.createForm();
-    this.dishService.getDishIds()
-      .subscribe((dishIds) => this.dishIds = dishIds);
-
-    this.route.params
-      .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-      .subscribe(
-        dish => {
-          this.dish = dish;
-          this.setPrevNext(dish.id);
-        },
-        errmess => this.errMess = <any>errmess
-      );
-  }
-
-
 
   setPrevNext(dishId: string){
     const index = this.dishIds.indexOf(dishId);
