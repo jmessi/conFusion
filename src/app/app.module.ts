@@ -26,6 +26,7 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
 //Services
 import { DishService } from './services/dish.service';
 import { LeaderService } from './services/leader.service';
+import { ProcessHTTPmsgService } from './services/process-httpmsg.service';
 import { baseURL } from './shared/baseurl';
 
 
@@ -52,6 +53,7 @@ import { baseURL } from './shared/baseurl';
   providers: [
     DishService,
     LeaderService,
+    ProcessHTTPmsgService,
     { provide: 'BaseURL', useValue: baseURL
   }
   ],
