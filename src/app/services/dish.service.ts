@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
@@ -10,6 +10,7 @@ import { ProcessHTTPmsgService } from './process-httpmsg.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DishService {
 
   constructor(
@@ -24,7 +25,7 @@ export class DishService {
 
   getDish(id: any): Observable<Dish>{
     return this.http.get<Dish>(baseURL + 'dishes/' + id)
-    .pipe(catchError(this.processHTTPmsgService.handleError));
+      .pipe(catchError(this.processHTTPmsgService.handleError));
   }
 
   getFeaturedDish(): Observable<Dish>{
@@ -52,7 +53,6 @@ export class DishService {
       dish,
       httpOptions)
       .pipe(catchError(this.processHTTPmsgService.handleError));
-
   }
 
 }
