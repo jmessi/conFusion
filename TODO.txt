@@ -1,0 +1,16 @@
+<!-- On project folder -->
+
+npm install
+npm install json-server -g
+
+<!-- Configure JSON server -->
+Serving up the Images
+
+- The json-server also provides a static web server. Any resources that you put in a folder named public in the json-server folder above, will be served by the server at the following address:
+- Shut down the server by typing ctrl-C in the terminal window.
+- Create a public folder in your json-server folder.
+- Move the images folder containing the images to the public folder.
+
+<!-- Running App -->
+ng serve -o
+json-server --watch db.json -d 2000
